@@ -10,6 +10,7 @@ module "project-factory" {
 #   usage_bucket_prefix  = "pf/test/1/integration"
   billing_account           = "014F7F-035A51-0DB60B"
   default_service_account   = "delete"
+  deletion_policy           = "DELETE"
 #   svpc_host_project_id = "shared_vpc_host_name"
     
 #   shared_vpc_subnets = [
