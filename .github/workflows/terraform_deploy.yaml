@@ -33,16 +33,16 @@ jobs:
 
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Terraform Init
-      run: terraform init -chdir=Terraform/
+      run: terraform -chdir=Terraform init 
       env:
         GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }} 
 
     # Checks that all Terraform configuration files adhere to a canonical format
     - name: Terraform Format
-      run: terraform fmt -check -chdir=Terraform/
+      run: terraform -chdir=Terraform/ fmt -check
 
     # Generates an execution plan for Terraform
     - name: Terraform Plan
-      run: terraform plan -input=false  -chdir=Terraform/
+      run: terraform -chdir=Terraform/ plan -input=false
       env:
         GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }} 
