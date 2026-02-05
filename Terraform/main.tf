@@ -8,7 +8,7 @@ module "project-factory" {
   folder_id            = "414750509829"
 #   usage_bucket_name    = "pf-test-1-usage-report-bucket"
 #   usage_bucket_prefix  = "pf/test/1/integration"
-#   billing_account      = "ABCDEF-ABCDEF-ABCDEF"
+  billing_account      = "014F7F-035A51-0DB60B"
 #   svpc_host_project_id = "shared_vpc_host_name"
     
 #   shared_vpc_subnets = [
