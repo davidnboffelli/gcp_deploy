@@ -43,6 +43,34 @@ resource "google_project" "doer_service_project" {
   folder_id  = google_folder.doer_folder.id
 }
 
+resource "google_project_service" "iam_service_host_project" {
+  project                     = google_project.doer_host_project.id
+  service                     = "iam.googleapis.com"
+  disable_dependent_services  = true
+  disable_on_destroy          = false
+}
+
+resource "google_project_service" "rm_service_host_project" {
+  project                     = google_project.doer_host_project.id
+  service                     = "cloudresourcemanager.googleapis.com"
+  disable_dependent_services  = true
+  disable_on_destroy          = false
+}
+
+resource "google_project_service" "iam_service_service_project" {
+  project                     = google_project.doer_service_project.id
+  service                     = "iam.googleapis.com"
+  disable_dependent_services  = true
+  disable_on_destroy          = false
+}
+
+resource "google_project_service" "rm_service_service_project" {
+  project                     = google_project.doer_service_project.id
+  service                     = "cloudresourcemanager.googleapis.com"
+  disable_dependent_services  = true
+  disable_on_destroy          = false
+}
+
 resource "google_service_account" "doer_sa" {
   account_id   = "sa-dnazareno"
   display_name = "sa-dnazareno"
