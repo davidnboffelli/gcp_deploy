@@ -22,7 +22,7 @@
 
 resource "google_folder" "doer_folder" {
   display_name = "dnazareno"
-  parent       = "folder/414750509829"
+  parent       = "folders/414750509829"
 }
 
 resource "google_project" "doer_host_project" {
