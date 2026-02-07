@@ -25,7 +25,7 @@ resource "google_folder" "doer_folder" {
   parent       = "organizations/414750509829"
 }
 
-resource "google_project" "my_project" {
+resource "google_project" "doer_host_project" {
   depends_on = [ google_folder.doer_folder ]
 
   name       = "prj-host-dnazareno"
@@ -34,7 +34,7 @@ resource "google_project" "my_project" {
   folder_id  = google_folder.doer_folder.id
 }
 
-resource "google_project" "my_project" {
+resource "google_project" "doer_service_project" {
   depends_on = [ google_folder.doer_folder ]
 
   name       = "prj-service-dnazareno"
@@ -43,17 +43,25 @@ resource "google_project" "my_project" {
   folder_id  = google_folder.doer_folder.id
 }
 
-resource "google_service_account" "service_accounts" {
+resource "google_service_account" "doer_sa" {
   account_id   = "sa-dnazareno"
   display_name = "sa-dnazareno"
   description  = "SA para uso del Doer dnazareno en el bootcamp de GCP"
   project      = "prj-cross"
 }
 
-resource "google_folder_iam_member" "folder" {
+resource "google_folder_iam_member" "doer_user_iam" {
   depends_on = [ google_folder.doer_folder ]
 
   folder  = google_folder.doer_folder.id
   role    = "roles/owner"
   member  = "user:dnazareno@stemdo.io"
+}
+
+resource "google_folder_iam_member" "doer_sa_iam" {
+  depends_on = [ google_folder.doer_folder ]
+
+  folder  = google_folder.doer_folder.id
+  role    = "roles/owner"
+  member  = "serviceAccount:${google_service_account.doer_sa.email}"
 }
