@@ -30,7 +30,7 @@ resource "google_project" "doer_host_project" {
 
   name       = "prj-host-dnazareno"
   project_id = "prj-host-dnazareno"
-  org_id     = "577081811435"
+  # org_id     = "577081811435"
   folder_id  = google_folder.doer_folder.id
 }
 
@@ -39,7 +39,7 @@ resource "google_project" "doer_service_project" {
 
   name       = "prj-service-dnazareno"
   project_id = "prj-service-dnazareno"
-  org_id     = "577081811435"
+  # org_id     = "577081811435"
   folder_id  = google_folder.doer_folder.id
 }
 
