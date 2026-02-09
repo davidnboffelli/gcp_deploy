@@ -74,27 +74,27 @@
 # #   member  = "serviceAccount:${google_service_account.doer_sa.email}"
 # # }
 
-resource "google_folder" "doer_folder" {
+# resource "google_folder" "doer_folder" {
  
 
-  display_name = "dnazareno"
-  parent       = "folders/414750509829"
-}
+#   display_name = "dnazareno"
+#   parent       = "folders/414750509829"
+# }
 
-resource "google_project" "doer_host_project" {
-  depends_on = [google_folder.doer_folder]
-      deletion_policy     = "DELETE"
-      folder_id           = "206955038157"
-      name                = "prj-host-dnazareno"
-      project_id          = "prj-host-dnazareno"
+# resource "google_project" "doer_host_project" {
+#   depends_on = [google_folder.doer_folder]
+#       deletion_policy     = "DELETE"
+#       folder_id           = "206955038157"
+#       name                = "prj-host-dnazareno"
+#       project_id          = "prj-host-dnazareno"
 
-}
+# }
 
-resource "google_project" "doer_service_project" {
-  depends_on = [google_folder.doer_folder]
-      deletion_policy     = "DELETE"
-      folder_id           = "206955038157"
-      name                = "prj-service-dnazareno"
-      project_id          = "prj-service-dnazareno"
+# resource "google_project" "doer_service_project" {
+#   depends_on = [google_folder.doer_folder]
+#       deletion_policy     = "DELETE"
+#       folder_id           = "206955038157"
+#       name                = "prj-service-dnazareno"
+#       project_id          = "prj-service-dnazareno"
 
-}
+# }
