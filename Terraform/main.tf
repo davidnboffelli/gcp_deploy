@@ -1,95 +1,81 @@
-# module "project-factory" {
-#   source  = "terraform-google-modules/project-factory/google"
-#   version = "~> 18.2"
+# locals {
 
-#   name                      = "prj-test-1"
-#   random_project_id         = false
-#   org_id                    = "577081811435"
-#   folder_id                 = "414750509829"
-# #   usage_bucket_name    = "pf-test-1-usage-report-bucket"
-# #   usage_bucket_prefix  = "pf/test/1/integration"
-#   billing_account           = "014F7F-035A51-0DB60B"
-#   default_service_account   = "delete"
-#   deletion_policy           = "DELETE"
-# #   svpc_host_project_id = "shared_vpc_host_name"
-    
-# #   shared_vpc_subnets = [
-# #     "projects/base-project-196723/regions/us-east1/subnetworks/default",
-# #     "projects/base-project-196723/regions/us-central1/subnetworks/default",
-# #     "projects/base-project-196723/regions/us-central1/subnetworks/subnet-1",
-# #   ]
+#   prefix_projects = {
+#     "host"    = var.common_values.values.prj_host_services,
+#     "service" = var.common_values.values.prj_service_services,
+#   }
+
+#   doers_and_values = {
+#     for k,d in var.doers :
+#     d.name => merge(
+#       {
+#         email = d.email
+#       },
+#       var.common_values.values
+#     )
+#   }
+
+#   doer_project = merge([ for k,v in local.prefix_projects : { for d in var.doers : "${d.name}-${k}"=> { "doer"=d.name,"project"=k } } ]...)
+
+#   project_services = merge([ for k,v in local.prefix_projects : { for pp in v : "${k}-${pp}"=> { "project"=k,"service"=pp } } ]...)
+#   doer_project_services = merge([ for k,v in local.project_services : { for d in var.doers : "${d.name}-${k}-${v.service}"=> { "doer"=d.name,"project"=v.project,"service"=v.service,"clave_prj"="${d.name}-${v.project}" } } ]...)
+
+  
+#   # doer_prefix_project = merge([ for k,v in local.doers_and_values : { for pp in v.prefix_projects : "${k}-${pp}" => {"doer"=k,"prefix_project"=pp} } ]...)
+#   # test = merge([ for k,v in local.doer_prefix_project : v ],[ for k,v in local.doers_and_values : v.prj_host_services ])
+
+# # doer, mail, proyecto, servicio
+
 # }
 
-resource "google_folder" "doer_folder" {
-  display_name = "dnazareno"
-  parent       = "folders/414750509829"
-}
+# resource "google_folder" "doer_folder" {
+#   for_each = local.doers_and_values
 
-resource "google_project" "doer_host_project" {
-  depends_on = [ google_folder.doer_folder ]
+#   display_name = each.key
+#   parent       = each.value.bootcamp_folder_id
+# }
 
-  name       = "prj-host-dnazareno"
-  project_id = "prj-host-dnazareno"
-  # org_id     = "577081811435"
-  folder_id  = google_folder.doer_folder.id
-}
+# resource "google_project" "doer_projects" {
+#   depends_on = [ google_folder.doer_folder ]
+#   for_each = local.doer_project
 
-resource "google_project" "doer_service_project" {
-  depends_on = [ google_folder.doer_folder ]
+#   name       = "prj-${each.value.project}-${each.value.doer}"
+#   project_id = "prj-${each.value.project}-${each.value.doer}"
+#   folder_id  = google_folder.doer_folder["${each.value.doer}"].id
+# }
 
-  name       = "prj-service-dnazareno"
-  project_id = "prj-service-dnazareno"
-  # org_id     = "577081811435"
-  folder_id  = google_folder.doer_folder.id
-}
+# resource "google_project_service" "project_services" {
+#   for_each = local.doer_project_services
 
-resource "google_project_service" "iam_service_host_project" {
-  project                     = google_project.doer_host_project.id
-  service                     = "iam.googleapis.com"
-  disable_dependent_services  = true
-  disable_on_destroy          = false
-}
+#   project                     = google_project.doer_projects["${each.value.clave_prj}"].id
+#   service                     = each.value.service
+#   disable_dependent_services  = true
+#   disable_on_destroy          = false
+# }
 
-resource "google_project_service" "rm_service_host_project" {
-  project                     = google_project.doer_host_project.id
-  service                     = "cloudresourcemanager.googleapis.com"
-  disable_dependent_services  = true
-  disable_on_destroy          = false
-}
+# resource "google_service_account" "doer_sa" {
+#   for_each = local.doers_and_values
 
-resource "google_project_service" "iam_service_service_project" {
-  project                     = google_project.doer_service_project.id
-  service                     = "iam.googleapis.com"
-  disable_dependent_services  = true
-  disable_on_destroy          = false
-}
+#   account_id   = "sa-${each.key}"
+#   display_name = "sa-${each.key}"
+#   description  = "SA para uso del Doer ${each.key} en el bootcamp de GCP"
+#   project      = each.value.prj_cross_id
+# }
 
-resource "google_project_service" "rm_service_service_project" {
-  project                     = google_project.doer_service_project.id
-  service                     = "cloudresourcemanager.googleapis.com"
-  disable_dependent_services  = true
-  disable_on_destroy          = false
-}
+# resource "google_folder_iam_member" "doer_user_iam" {
+#   depends_on = [ google_folder.doer_folder ]
+#   for_each = local.doers_and_values
 
-resource "google_service_account" "doer_sa" {
-  account_id   = "sa-dnazareno"
-  display_name = "sa-dnazareno"
-  description  = "SA para uso del Doer dnazareno en el bootcamp de GCP"
-  project      = "prj-cross"
-}
+#   folder  = google_folder.doer_folder["${each.key}"].id
+#   role    = each.key
+#   member  = "user:dnazareno@stemdo.io"
+# }
 
-resource "google_folder_iam_member" "doer_user_iam" {
-  depends_on = [ google_folder.doer_folder ]
+# resource "google_folder_iam_member" "doer_sa_iam" {
+#   depends_on = [ google_folder.doer_folder ]
+#   count = var.roles_over_doer_sa
 
-  folder  = google_folder.doer_folder.id
-  role    = "roles/owner"
-  member  = "user:dnazareno@stemdo.io"
-}
-
-resource "google_folder_iam_member" "doer_sa_iam" {
-  depends_on = [ google_folder.doer_folder ]
-
-  folder  = google_folder.doer_folder.id
-  role    = "roles/owner"
-  member  = "serviceAccount:${google_service_account.doer_sa.email}"
-}
+#   folder  = google_folder.doer_folder.id
+#   role    = each.key
+#   member  = "serviceAccount:${google_service_account.doer_sa.email}"
+# }
