@@ -74,6 +74,12 @@
 # #   member  = "serviceAccount:${google_service_account.doer_sa.email}"
 # # }
 
+resource "google_folder" "doer_folder" {
+ 
+
+  display_name = "dnazareno"
+  parent       = "folders/414750509829"
+}
 
 resource "google_project" "doer_host_project" {
   depends_on = [google_folder.doer_folder]
