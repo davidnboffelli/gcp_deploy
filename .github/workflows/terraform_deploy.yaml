@@ -50,7 +50,7 @@ jobs:
         GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }} 
 
     - name: Terraform Apply
-      if: ${{ github.event.inputs.apply }}
+      if: ${{ inputs.apply }}
       run: terraform -chdir=Terraform/ apply -auto-approve -input=false
       env:
         GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}

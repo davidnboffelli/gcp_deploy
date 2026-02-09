@@ -20,12 +20,6 @@
 #   project_services = merge([ for k,v in local.prefix_projects : { for pp in v : "${k}-${pp}"=> { "project"=k,"service"=pp } } ]...)
 #   doer_project_services = merge([ for k,v in local.project_services : { for d in var.doers : "${d.name}-${k}-${v.service}"=> { "doer"=d.name,"project"=v.project,"service"=v.service,"clave_prj"="${d.name}-${v.project}" } } ]...)
 
-  
-#   # doer_prefix_project = merge([ for k,v in local.doers_and_values : { for pp in v.prefix_projects : "${k}-${pp}" => {"doer"=k,"prefix_project"=pp} } ]...)
-#   # test = merge([ for k,v in local.doer_prefix_project : v ],[ for k,v in local.doers_and_values : v.prj_host_services ])
-
-# # doer, mail, proyecto, servicio
-
 # }
 
 # resource "google_folder" "doer_folder" {
@@ -62,20 +56,20 @@
 #   project      = each.value.prj_cross_id
 # }
 
-# resource "google_folder_iam_member" "doer_user_iam" {
-#   depends_on = [ google_folder.doer_folder ]
-#   for_each = local.doers_and_values
+# # resource "google_folder_iam_member" "doer_user_iam" {
+# #   depends_on = [ google_folder.doer_folder ]
+# #   for_each = local.doers_and_values
 
-#   folder  = google_folder.doer_folder["${each.key}"].id
-#   role    = each.key
-#   member  = "user:dnazareno@stemdo.io"
-# }
+# #   folder  = google_folder.doer_folder["${each.key}"].id
+# #   role    = each.key
+# #   member  = "user:dnazareno@stemdo.io"
+# # }
 
-# resource "google_folder_iam_member" "doer_sa_iam" {
-#   depends_on = [ google_folder.doer_folder ]
-#   count = var.roles_over_doer_sa
+# # resource "google_folder_iam_member" "doer_sa_iam" {
+# #   depends_on = [ google_folder.doer_folder ]
+# #   count = var.roles_over_doer_sa
 
-#   folder  = google_folder.doer_folder.id
-#   role    = each.key
-#   member  = "serviceAccount:${google_service_account.doer_sa.email}"
-# }
+# #   folder  = google_folder.doer_folder.id
+# #   role    = each.key
+# #   member  = "serviceAccount:${google_service_account.doer_sa.email}"
+# # }
