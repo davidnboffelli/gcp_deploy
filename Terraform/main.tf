@@ -73,3 +73,20 @@
 # #   role    = each.key
 # #   member  = "serviceAccount:${google_service_account.doer_sa.email}"
 # # }
+
+
+resource "google_project" "doer_host_project" {
+      deletion_policy     = "DELETE"
+      folder_id           = "206955038157"
+      name                = "prj-host-dnazareno"
+      project_id          = "prj-host-dnazareno"
+
+}
+
+resource "google_project" "doer_service_project" {
+      deletion_policy     = "DELETE"
+      folder_id           = "206955038157"
+      name                = "prj-service-dnazareno"
+      project_id          = "prj-service-dnazareno"
+
+}
