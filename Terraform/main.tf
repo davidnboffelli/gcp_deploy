@@ -76,6 +76,7 @@
 
 
 resource "google_project" "doer_host_project" {
+  depends_on = [google_folder.doer_folder]
       deletion_policy     = "DELETE"
       folder_id           = "206955038157"
       name                = "prj-host-dnazareno"
@@ -84,6 +85,7 @@ resource "google_project" "doer_host_project" {
 }
 
 resource "google_project" "doer_service_project" {
+  depends_on = [google_folder.doer_folder]
       deletion_policy     = "DELETE"
       folder_id           = "206955038157"
       name                = "prj-service-dnazareno"
