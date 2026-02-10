@@ -8,6 +8,10 @@ on:
         description: Apply?
         default : false
 
+env:
+  TF_VAR_git_user: ${{ secrets.git_user }} 
+  TF_VAR_git_pat: ${{ secrets.git_pat }} 
+
 permissions:
   contents: read
 
