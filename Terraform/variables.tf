@@ -19,13 +19,3 @@ variable "common_values" {
   nullable    = false
   default     = {}
 }
-
-# variable "git_user" {
-#   type      = string
-#   nullable  = false
-# }
-
-# variable "git_pat" {
-#   type      = string
-#   nullable  = false
-# }

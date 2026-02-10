@@ -25,12 +25,3 @@ resource "google_project_service" "project_services" {
   disable_dependent_services  = true
   disable_on_destroy          = false
 }
-
-# resource "google_service_account" "doer_sa" {
-#   for_each = local.doers_and_values
-
-#   account_id   = "sa-${each.key}"
-#   display_name = "sa-${each.key}"
-#   description  = "SA para uso del Doer ${each.key} en el bootcamp de GCP"
-#   project      = each.value.prj_cross_id
-# }

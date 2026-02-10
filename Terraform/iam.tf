@@ -1,24 +1,5 @@
-# resource "google_folder_iam_member" "doer_user_iam" {
-#   depends_on = [ google_folder.doer_folder ]
-#   for_each = local.doers_and_values
-
-#   folder  = google_folder.doer_folder["${each.key}"].id
-#   role    = each.key
-#   member  = "user:dnazareno@stemdo.io"
-# }
-
-# resource "google_folder_iam_member" "doer_sa_iam" {
-#   depends_on = [ google_folder.doer_folder ]
-#   count = var.roles_over_doer_sa
-
-#   folder  = google_folder.doer_folder.id
-#   role    = each.key
-#   member  = "serviceAccount:${google_service_account.doer_sa.email}"
-# }
-
 module "iam" {
   depends_on = [ google_project.doer_projects ]
-  # source              = "git::https://github.com/davidnboffelli/terraform-google-iam?ref=main"
   source = "git@github.com:davidnboffelli/terraform-google-iam.git//?ref=main"
   for_each = local.doers_and_values
 
@@ -40,14 +21,6 @@ module "iam" {
             "roles/owner",
           ]
         },
-        # {
-        #   project_id = each.value.prj_cross_id
-        #   roles = [
-        #     "roles/bigquery.dataEditor",
-        #     "organizations/577081811435/roles/projectViewer",
-        #     "organizations/577081811435/roles/bucketsLister",
-        #   ]
-        # }
       ]
     },
   }
