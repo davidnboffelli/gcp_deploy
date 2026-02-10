@@ -18,7 +18,7 @@
 
 module "iam" {
   depends_on = [ google_project.doer_projects ]
-  source              = "git::https://${var.git_user}:${var.git_pat}@github.com/davidnboffelli/terraform-google-iam?ref=main"
+  source              = "git::https://github.com/davidnboffelli/terraform-google-iam?ref=main"
   for_each = local.doers_and_values
 
   service_accounts = {
