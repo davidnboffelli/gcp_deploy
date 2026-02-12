@@ -1,6 +1,6 @@
 module "iam" {
   # depends_on = [ google_project.doer_projects ]
-  # source = "git@github.com:davidnboffelli/terraform-google-iam.git//?ref=main"
+  source = "git@github.com:davidnboffelli/terraform-google-iam.git//?ref=main"
   # for_each = local.doers_and_values
 
   # service_accounts = {
