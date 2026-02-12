@@ -3,7 +3,7 @@ variable "doers" {
         name  = string
         email = string
   }))
-    nullable = false
+  nullable = false
 }
 
 variable "common_values" {

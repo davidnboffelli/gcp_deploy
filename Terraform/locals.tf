@@ -1,5 +1,7 @@
 locals {
 
+  sa_project = "host"
+
   prefix_projects_services = {
     "host"    = var.common_values.values.prj_host_services,
     "service" = var.common_values.values.prj_service_services,
@@ -28,17 +30,7 @@ locals {
     }
   ]
 
-  sa_project = "host"
-
-  doers_and_values = {
-    for k,d in var.doers :
-    d.name => merge(
-      {
-        email = d.email
-      },
-      var.common_values.values
-    )
-  }
+  doers_and_values      = { for k,d in var.doers : d.name => merge({email = d.email},var.common_values.values)}
 
   doer_project          = merge([ for k,v in local.prefix_projects_services : { for d in var.doers : "${d.name}-${k}"=> { "doer"=d.name,"project"=k } } ]...)
 

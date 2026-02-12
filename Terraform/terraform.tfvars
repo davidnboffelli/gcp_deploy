@@ -11,25 +11,25 @@ doers = {
 
 common_values = {
   "values" = {
-    bootcamp_folder_id      = "folders/414750509829"
-    prj_host_services       = [
+    bootcamp_folder_id = "folders/414750509829"
+    prj_host_services                 = [
       "iam.googleapis.com",
       "cloudresourcemanager.googleapis.com"
       ]
-    prj_service_services    = [
+    prj_service_services              = [
       "iam.googleapis.com",
       "cloudresourcemanager.googleapis.com"
       ]
-    doer_user_roles_over_prj_host    = [
+    doer_user_roles_over_prj_host     = [
       "roles/reader"
       ]
-    doer_user_roles_over_prj_service      = [
+    doer_user_roles_over_prj_service  = [
       "roles/reader"
       ]
-    doer_sa_roles_over_prj_host    = [
+    doer_sa_roles_over_prj_host       = [
       "roles/writer"
       ]
-    doer_sa_roles_over_prj_service      = [
+    doer_sa_roles_over_prj_service    = [
       "roles/writer"
       ]
   }
