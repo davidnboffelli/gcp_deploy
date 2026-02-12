@@ -8,13 +8,14 @@ variable "doers" {
 
 variable "common_values" {
   type = map(object({
-        prj_host_services       = list(string)
-        prj_service_services    = list(string)
-        organization_id         = optional(string,"577081811435")
-        bootcamp_folder_id      = string
-        prj_cross_id            = string
-        roles_over_doer_user    = list(string)
-        roles_over_doer_sa      = list(string)
+        organization_id                   = optional(string,"577081811435")
+        bootcamp_folder_id                = string
+        prj_host_services                 = list(string)
+        prj_service_services              = list(string)
+        doer_user_roles_over_prj_host     = list(string)
+        doer_user_roles_over_prj_service  = list(string)
+        doer_sa_roles_over_prj_host       = list(string)
+        doer_sa_roles_over_prj_service    = list(string)
   }))
   nullable    = false
   default     = {}
