@@ -5,18 +5,6 @@ locals {
     "service" = var.common_values.values.prj_service_services,
   }
 
-  prefix_projects_user_iam = {
-    "member"  = "user"
-    "host"    = var.common_values.values.doer_user_roles_over_prj_host,
-    "service" = var.common_values.values.doer_user_roles_over_prj_service,
-  }
-
-  prefix_projects_sa_iam = {
-    "member"  = "serviceAccount"
-    "host"    = var.common_values.values.doer_sa_roles_over_prj_host,
-    "service" = var.common_values.values.doer_sa_roles_over_prj_service,
-  }
-
   prefix_projects_iam = [
     {
       "member"  = "user"
@@ -59,4 +47,5 @@ locals {
 
   doers_roles_list      = [ for t in setproduct(local.prefix_projects_iam,[ for k,v in var.doers : v ]) : merge(t...) ]
   doers_roles_map       = { for dl in local.doers_roles_list : "${dl.name}-${dl.member}-${dl.project}" => {"email"=dl.email,"name"=dl.name,"member"=dl.member,"project"=dl.project,"roles"=dl.roles} }
+
 }
