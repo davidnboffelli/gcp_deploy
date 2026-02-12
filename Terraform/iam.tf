@@ -1,38 +1,14 @@
-# module "iam" {
-#   # depends_on = [ google_project.doer_projects ]
-#   source = "git@github.com:davidnboffelli/terraform-google-iam.git//?ref=main"
-#   # for_each = local.doers_and_values
+module "service_accounts" {
+  depends_on = [ google_project.doer_projects ]
+  source = "git@github.com:davidnboffelli/terraform-google-iam.git//?ref=main"
+  for_each = var.doers
 
-#   # service_accounts = {
-#   #   "sa-${each.key}" = {
-#   #     service_account_id    = "sa-${each.key}"
-#   #     project_id            = "${each.value.prj_cross_id}"
-#   #     description           = "SA para uso del Doer ${each.key} en el bootcamp de GCP"
-#   #   },
-#   # }
+  service_accounts = {
+    "sa-${each.value.name}" = {
+      service_account_id    = "sa-${each.value.name}"
+      project_id            = "prj-${local.sa_project}-${each.value.name}"
+      description           = "SA para uso del Doer ${each.value.name} en el bootcamp de GCP"
+    },
+  }
+}
 
-#   # roles_assignation = {
-#   #   ###############SERVICE ACCOUNTS & SERVICE AGENTS###############
-#   #   "newServiceAccount:sa-${each.key}" = {
-#   #     project_level_roles = [
-#   #       {
-#   #         project_id = "${each.value.prj_cross_id}"
-#   #         roles = [
-#   #           "roles/owner",
-#   #         ]
-#   #       },
-#   #     ]
-#   #   },
-#   # }
-
-#   # groups = {
-#   #   "gcp-test-module-iam" = {
-#   #     name        = "gcp-test-module-iam"
-#   #     description = "Grupo de Prueba"
-#   #     type        = "default"
-#   #     members = [
-#   #       "dnazareno@stemdo.io",
-#   #     ]
-#   #   }
-#   # }
-# }

@@ -5,6 +5,8 @@ locals {
     "service" = var.common_values.values.prj_service_services,
   }
 
+  sa_project = "host"
+
   doers_and_values = {
     for k,d in var.doers :
     d.name => merge(
