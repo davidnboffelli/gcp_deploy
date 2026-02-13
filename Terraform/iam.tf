@@ -5,7 +5,7 @@ resource "google_service_account" "doer_sa" {
   account_id   = "sa-${each.value.name}"
   display_name = "sa-${each.value.name}"
   description  = "SA para uso del Doer ${each.value.name} en el bootcamp de GCP"
-  project      = "prj-${each.value.project}-${local.sa_project}${local.project_suffix}"
+  project      = "prj-${local.sa_project}-${each.value.name}${local.project_suffix}"
 }
 
 module "doer_org_iam" {
@@ -46,7 +46,7 @@ module "doer_project_iam" {
   for_each    = local.doers_roles_map
 
   roles_assignation = {
-    "${each.value.member}:${each.value.member == "user" ? each.value.email : "sa-${each.value.name}@prj-${each.value.project}-${each.value.name}${local.project_suffix}.iam.gserviceaccount.com"}" = {
+    "${each.value.member}:${each.value.member == "user" ? each.value.email : "sa-${each.value.name}@prj-${local.sa_project}-${each.value.name}${local.project_suffix}.iam.gserviceaccount.com"}" = {
       project_level_roles = [
         {
           project_id  = "prj-${each.value.project}-${each.value.name}${local.project_suffix}"
