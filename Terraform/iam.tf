@@ -1,5 +1,5 @@
-resource "google_service_account" "project_services" {
-  depends_on  = [ google_project_service.doer_projects ]
+resource "google_service_account" "doer_sa" {
+  depends_on  = [ google_project_service.project_services ]
   for_each    = var.doers
 
   account_id   = "sa-${each.value.name}"
