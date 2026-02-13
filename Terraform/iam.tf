@@ -5,7 +5,7 @@ resource "google_service_account" "doer_sa" {
   account_id   = "sa-${each.value.name}"
   display_name = "sa-${each.value.name}"
   description  = "SA para uso del Doer ${each.value.name} en el bootcamp de GCP"
-  project      = ${local.sa_project}
+  "prj-${each.value.project}-${local.sa_project}${local.project_suffix}"
 }
 
 # resource "google_organization_iam_member" "doer_organization_iam" {
@@ -28,7 +28,7 @@ module "doer_upper_iam" {
 
   roles_assignation = {
     "user:${each.value.email}" = {
-      each.value.nivel == "organization" ? organization_level_roles = [
+      (each.value.nivel == "organization" ? organization_level_roles = [
         {
           roles = each.value.roles
         }
@@ -39,7 +39,7 @@ module "doer_upper_iam" {
           var.common_values.values.bootcamp_folder_id
           roles     = each.value.roles
         }
-      ],
+      ],)
     }
   }
 }
