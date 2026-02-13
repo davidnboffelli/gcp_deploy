@@ -30,7 +30,7 @@ locals {
     }
   ]
 
-    project_suffix      = var.common_values.values.random_project_id_suffix ? "-${random_id.random_project_id_suffix.hex}" : ""
+  project_suffix      = var.common_values.values.random_project_id_suffix ? "-${random_id.random_project_id_suffix.hex}" : ""
 
   doers_and_values      = { for k,d in var.doers : d.name => merge({email = d.email},var.common_values.values)}
 

@@ -5,41 +5,37 @@ resource "google_service_account" "doer_sa" {
   account_id   = "sa-${each.value.name}"
   display_name = "sa-${each.value.name}"
   description  = "SA para uso del Doer ${each.value.name} en el bootcamp de GCP"
-  "prj-${each.value.project}-${local.sa_project}${local.project_suffix}"
+  project      = "prj-${each.value.project}-${local.sa_project}${local.project_suffix}"
 }
 
-# resource "google_organization_iam_member" "doer_organization_iam" {
-#   for_each  = var.doers
-#   org_id    = var.common_values.values.organization_id
-#   role      = "roles/resourcemanager.organizationViewer"
-#   member    = "user:${each.value.email}"
-# }
-
-# resource "google_folder_iam_member" "doer_folder_iam" {
-#   for_each  = var.doers
-#   folder    = var.common_values.values.bootcamp_folder_id
-#   role      = "organizations/761110783262/roles/limitedBrowser"
-#   member    = "user:${each.value.email}"
-# }
-
-module "doer_upper_iam" {
+module "doer_org_iam" {
   source      = "git@github.com:davidnboffelli/terraform-google-iam.git//?ref=main"
-  for_each    = local.doer_iam_over_folder_and_org
+  for_each    = local.doers_and_values
 
   roles_assignation = {
     "user:${each.value.email}" = {
-      (each.value.nivel == "organization" ? organization_level_roles = [
+      organization_level_roles = [
         {
-          roles = each.value.roles
+          roles = var.common_values.values.doer_user_roles_over_org
         }
       ],
-      : 
+    }
+  }
+}
+
+module "doer_folder_iam" {
+  depends_on  = [ google_folder.doer_folder ]
+  source      = "git@github.com:davidnboffelli/terraform-google-iam.git//?ref=main"
+  for_each    = local.doers_and_values
+
+  roles_assignation = {
+    "user:${each.value.email}" = {
       folder_level_roles = [
         {
-          var.common_values.values.bootcamp_folder_id
-          roles     = each.value.roles
+          folder_id = var.common_values.values.bootcamp_folder_id
+          roles     = var.common_values.values.doer_user_roles_over_folder
         }
-      ],)
+      ],
     }
   }
 }
