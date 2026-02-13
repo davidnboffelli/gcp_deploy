@@ -1,4 +1,4 @@
-resource "google_service_account" "doer_sa" {
+resource "google_service_account" "project_services" {
   depends_on  = [ google_project_service.doer_projects ]
   for_each    = var.doers
 
