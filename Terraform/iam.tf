@@ -17,6 +17,7 @@ resource "google_service_account" "doer_sa" {
 # }
 
 # resource "google_folder_iam_member" "doers_folder_iam" {
+#   depends_on  = [ google_folder.doer_folder ]
 #   for_each = local.doers_iam_over_folder
 
 #   folder   = "folders/${google_folder.doer_folder["${each.value.name}"].folder_id}"
