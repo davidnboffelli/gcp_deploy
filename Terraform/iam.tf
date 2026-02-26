@@ -19,7 +19,7 @@ resource "google_organization_iam_member" "organization_iam_additive" {
 resource "google_folder_iam_member" "doers_folder_iam" {
   for_each = local.doers_iam_over_folder
 
-  folder   = google_folder.doer_folder["${each.value.name}"]
+  folder   = "folders/${google_folder.doer_folder["${each.value.name}"].folder_id}"
   role     = each.value.role
   member   = "user:${each.value.email}"
 }
