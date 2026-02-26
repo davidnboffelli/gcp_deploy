@@ -42,6 +42,9 @@ locals {
   doer_project_services = merge([ for k,v in local.project_services : { for d in var.doers : "${d.name}-${k}"=> { "doer"=d.name,"project"=v.project,"service"=v.service,"clave_prj"="${d.name}-${v.project}" } } ]...)
 
   doers_roles_list      = [ for t in setproduct(local.prefix_projects_iam,[ for k,v in var.doers : v ]) : merge(t...) ]
-  doers_roles_map       = { for dl in local.doers_roles_list : "${dl.name}-${dl.member}-${dl.project}" => {"email"=dl.email,"name"=dl.name,"member"=dl.member,"project"=dl.project,"roles"=dl.roles} }
+  doers_roles_map       = merge([ for dr in local.doers_roles_list : { for r in dr.roles : "${dr.name}-${dr.member}-${dr.project}-${r}" => {"email"=dr.email,"name"=dr.name,"member"=dr.member,"project"=dr.project,"role"=r} } ]...)
 
+  doers_iam_over_folder = merge([ for k,v in local.doers_and_values : { for r in v.doer_user_roles_over_folder : "${k}-${v.email}-${r}" => {"email"=v.email,"name"=k,"role"=r} } ]...)
+
+  doers_iam_over_org = merge([ for k,v in local.doers_and_values : { for r in v.doer_user_roles_over_org : "${k}-${v.email}-${r}" => {"email"=v.email,"name"=k,"role"=r} } ]...)
 }
