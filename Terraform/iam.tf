@@ -8,21 +8,21 @@ resource "google_service_account" "doer_sa" {
   project      = "prj-${local.sa_project}-${each.value.name}${local.project_suffix}"
 }
 
-resource "google_organization_iam_member" "organization_iam_additive" {
-  for_each = local.doers_iam_over_org
+# resource "google_organization_iam_member" "organization_iam_additive" {
+#   for_each = local.doers_iam_over_org
 
-  org_id   = var.common_values.values.organization_id
-  role     = each.value.role
-  member   = "user:${each.value.email}"
-}
+#   org_id   = var.common_values.values.organization_id
+#   role     = each.value.role
+#   member   = "user:${each.value.email}"
+# }
 
-resource "google_folder_iam_member" "doers_folder_iam" {
-  for_each = local.doers_iam_over_folder
+# resource "google_folder_iam_member" "doers_folder_iam" {
+#   for_each = local.doers_iam_over_folder
 
-  folder   = "folders/${google_folder.doer_folder["${each.value.name}"].folder_id}"
-  role     = each.value.role
-  member   = "user:${each.value.email}"
-}
+#   folder   = "folders/${google_folder.doer_folder["${each.value.name}"].folder_id}"
+#   role     = each.value.role
+#   member   = "user:${each.value.email}"
+# }
 
 resource "google_project_iam_member" "doers_project_iam" {
   for_each = local.doers_roles_map
@@ -31,54 +31,3 @@ resource "google_project_iam_member" "doers_project_iam" {
   role     = each.value.role
   member   = "${each.value.member}:${each.value.member == "user" ? each.value.email : "sa-${each.value.name}@prj-${local.sa_project}-${each.value.name}${local.project_suffix}.iam.gserviceaccount.com"}"
 }
-
-# module "doer_org_iam" {
-#   source      = "git@github.com:davidnboffelli/terraform-google-iam.git//?ref=main"
-#   for_each    = local.doers_and_values
-
-#   roles_assignation = {
-#     "user:${each.value.email}" = {
-#       organization_level_roles = [
-#         {
-#           roles = var.common_values.values.doer_user_roles_over_org
-#         }
-#       ],
-#     }
-#   }
-# }
-
-
-# module "doer_folder_iam" {
-#   depends_on  = [ google_folder.doer_folder ]
-#   source      = "git@github.com:davidnboffelli/terraform-google-iam.git//?ref=main"
-#   for_each    = local.doers_and_values
-
-#   roles_assignation = {
-#     "user:${each.value.email}" = {
-#       folder_level_roles = [
-#         {
-#           folder_id = var.common_values.values.bootcamp_folder_id
-#           roles     = var.common_values.values.doer_user_roles_over_folder
-#         }
-#       ],
-#     }
-#   }
-# }
-
-# module "doer_project_iam" {
-#   depends_on  = [ google_service_account.doer_sa ]
-#   source      = "git@github.com:davidnboffelli/terraform-google-iam.git//?ref=main"
-#   for_each    = local.doers_roles_map
-
-#   roles_assignation = {
-#     "${each.value.member}:${each.value.member == "user" ? each.value.email : "sa-${each.value.name}@prj-${local.sa_project}-${each.value.name}${local.project_suffix}.iam.gserviceaccount.com"}" = {
-#       project_level_roles = [
-#         {
-#           project_id  = "prj-${each.value.project}-${each.value.name}${local.project_suffix}"
-#           roles       = each.value.roles
-#         },
-#       ],
-#     }
-#   }
-# }
-
