@@ -7,6 +7,10 @@ on:
         type: boolean
         description: Apply?
         default : false
+      destroy:
+        type: boolean
+        description: Destroy?
+        default : false
 
 # env:
 #   TF_VAR_git_user: ${{ secrets.git_user }} 
@@ -57,5 +61,11 @@ jobs:
     - name: Terraform Apply
       if: ${{ inputs.apply }}
       run: terraform -chdir=Terraform/ apply -auto-approve -input=false
+      env:
+        GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+
+    - name: Terraform Destroy
+      if: ${{ inputs.destroy }}
+      run: terraform -chdir=Terraform/ destroy -auto-approve -input=false
       env:
         GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
