@@ -26,6 +26,8 @@ resource "google_service_account" "doer_sa" {
 # }
 
 resource "google_project_iam_member" "doers_project_iam" {
+  depends_on  = [ google_project.doer_projects,
+                  google_service_account.doer_sa ]
   for_each = local.doers_roles_map
 
   project  = "prj-${each.value.project}-${each.value.name}${local.project_suffix}"
