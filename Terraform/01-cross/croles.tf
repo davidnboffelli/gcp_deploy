@@ -8,10 +8,7 @@ module "iam" {
         {
           project_id = "prj-host-test"
           roles = [
-            "roles/run.invoker",
-            "roles/dataproc.editor",
-            "organizations/577081811435/roles/custom.role.test1",
-            "projects/prj-d-9998-ccoe-sndbx-iam-sw/roles/custom.role.test2",
+            "organizations/577081811435/roles/bootcamp.doers.excercises",
           ]
         }
       ]
