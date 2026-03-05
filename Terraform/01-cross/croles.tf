@@ -22,20 +22,26 @@ module "iam" {
       ]
     }
     "newServiceAccount:sa-doers-test" = {
-      project_level_roles = [
+      folder_level_roles = [
         {
-          project_id = "prj-host-test"
-          roles = [
-            "organizations/577081811435/roles/bootcamp.doers.excercises",
-          ]
-        },
-        {
-          project_id = "prj-service-test-486613"
-          roles = [
-            "organizations/577081811435/roles/bootcamp.doers.excercises",
-          ]
+          folder_id = "414750509829"
+          roles     = ["roles/compute.xpnAdmin"]
         }
-      ]
+      ],
+    #   project_level_roles = [
+    #     {
+    #       project_id = "prj-host-test"
+    #       roles = [
+    #         "organizations/577081811435/roles/bootcamp.doers.excercises",
+    #       ]
+    #     },
+    #     {
+    #       project_id = "prj-service-test-486613"
+    #       roles = [
+    #         "organizations/577081811435/roles/bootcamp.doers.excercises",
+    #       ]
+    #     }
+    #   ]
     }
   }
 

@@ -24,3 +24,10 @@ Siguientes pasos:
 - comentar codigo
 - hacer prueba de permisos necesarios para despliegue de recursos?
 - definir procedimiento
+
+
+
+
+
+Permisos:
+inicialmente pedian compute.organizations.enableXpnHost y compute.subnetworks.setIamPolicy, pero di Compute Shared VPC Admin (roles/compute.xpnAdmin) a nivel de folder
