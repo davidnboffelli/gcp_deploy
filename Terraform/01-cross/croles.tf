@@ -4,7 +4,7 @@ module "iam" {
   service_accounts = {
     "sa-doers-test" = {
       service_account_id = "sa-doers-test"
-      project_id         = "prj-cross"
+      project_id         = "prj-service-test-486613"
       description        = "SA de prueba para doers"
     },
   }
