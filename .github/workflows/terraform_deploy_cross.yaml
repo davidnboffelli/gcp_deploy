@@ -1,4 +1,4 @@
-name: 'Terraform'
+name: 'Terraform Cross'
 
 on:
   workflow_dispatch:
@@ -44,28 +44,28 @@ jobs:
       run: |
         eval `ssh-agent -s`
         ssh-add - <<< '${{ secrets.SSH_KEY_GITHUB_ACTIONS }}'
-        terraform -chdir=Terraform init 
+        terraform -chdir=Terraform/01-cross init 
       env:
         GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }} 
 
     # # Checks that all Terraform configuration files adhere to a canonical format
     # - name: Terraform Format
-    #   run: terraform -chdir=Terraform/ fmt -check
+    #   run: terraform -chdir=Terraform/01-cross fmt -check
 
     # Generates an execution plan for Terraform
     - name: Terraform Plan
-      run: terraform -chdir=Terraform/ plan -input=false
+      run: terraform -chdir=Terraform/01-cross plan -input=false
       env:
         GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }} 
 
     - name: Terraform Apply
       if: ${{ inputs.apply }}
-      run: terraform -chdir=Terraform/ apply -auto-approve -input=false
+      run: terraform -chdir=Terraform/01-cross apply -auto-approve -input=false
       env:
         GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
 
     - name: Terraform Destroy
       if: ${{ inputs.destroy }}
-      run: terraform -chdir=Terraform/ destroy -auto-approve -input=false
+      run: terraform -chdir=Terraform/01-cross destroy -auto-approve -input=false
       env:
         GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}

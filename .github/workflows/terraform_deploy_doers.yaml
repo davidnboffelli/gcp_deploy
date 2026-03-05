@@ -1,0 +1,71 @@
+name: 'Terraform Doers'
+
+on:
+  workflow_dispatch:
+    inputs:
+      apply:
+        type: boolean
+        description: Apply?
+        default : false
+      destroy:
+        type: boolean
+        description: Destroy?
+        default : false
+
+# env:
+#   TF_VAR_git_user: ${{ secrets.git_user }} 
+#   TF_VAR_git_pat: ${{ secrets.git_pat }} 
+
+permissions:
+  contents: read
+
+jobs:
+  terraform:
+    name: 'Terraform'
+    runs-on: ubuntu-latest
+    # environment: production
+
+    # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+    # Checkout the repository to the GitHub Actions runner
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v1
+
+    # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
+    - name: Terraform Init
+      run: |
+        eval `ssh-agent -s`
+        ssh-add - <<< '${{ secrets.SSH_KEY_GITHUB_ACTIONS }}'
+        terraform -chdir=Terraform/02-doers init 
+      env:
+        GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }} 
+
+    # # Checks that all Terraform configuration files adhere to a canonical format
+    # - name: Terraform Format
+    #   run: terraform -chdir=Terraform/02-doers fmt -check
+
+    # Generates an execution plan for Terraform
+    - name: Terraform Plan
+      run: terraform -chdir=Terraform/02-doers plan -input=false
+      env:
+        GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }} 
+
+    - name: Terraform Apply
+      if: ${{ inputs.apply }}
+      run: terraform -chdir=Terraform/02-doers apply -auto-approve -input=false
+      env:
+        GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+
+    - name: Terraform Destroy
+      if: ${{ inputs.destroy }}
+      run: terraform -chdir=Terraform/02-doers destroy -auto-approve -input=false
+      env:
+        GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
