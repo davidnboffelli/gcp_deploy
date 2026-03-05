@@ -1,6 +1,14 @@
 module "iam" {
   source = "git@github.com:davidnboffelli/terraform-google-iam.git//?ref=main"
 
+  service_accounts = {
+    "sa-doers-test" = {
+      service_account_id = "sa-doers-test"
+      project_id         = "prj-cross"
+      description        = "SA de prueba para doers"
+    },
+  }
+
   roles_assignation = {
     ##########################CREATED SERVICE ACCOUNTS#################################
     "user:cntenorio@stemdo.io" = {
@@ -13,26 +21,42 @@ module "iam" {
         }
       ]
     }
+    "newServiceAccount:sa-doers-test" = {
+      project_level_roles = [
+        {
+          project_id = "prj-host-test"
+          roles = [
+            "organizations/577081811435/roles/bootcamp.doers.excercises",
+          ]
+        },
+        {
+          project_id = "prj-service-test-486613"
+          roles = [
+            "organizations/577081811435/roles/bootcamp.doers.excercises",
+          ]
+        }
+      ]
+    }
   }
 
-  custom_roles = {
-    # Ejemplo de rol personalizado con base en diferentes roles y permisos, a nivel de organización
-    "cr1" = {
-      org_id          = "577081811435"
-      role_id         = "bootcamp.doers.excercises"
-      title           = "Bootcamp Doers Excercises"
-      description     = "IAM requerido por los doers para realizar los ejercicios del modulo de GCP"
-    #   roles = [
-    #       "roles/artifactregistry.reader",
-    #       "roles/artifactregistry.writer",
-    #   ],
-      permissions = [
-        "compute.organizations.enableXpnHost",
-        "compute.subnetworks.setIamPolicy",
-        # "storage.buckets.get",
-        # "storage.buckets.list",
-      ],
-    },
+#   custom_roles = {
+#     # Ejemplo de rol personalizado con base en diferentes roles y permisos, a nivel de organización
+#     "cr1" = {
+#       org_id          = "577081811435"
+#       role_id         = "bootcamp.doers.excercises"
+#       title           = "Bootcamp Doers Excercises"
+#       description     = "IAM requerido por los doers para realizar los ejercicios del modulo de GCP"
+#     #   roles = [
+#     #       "roles/artifactregistry.reader",
+#     #       "roles/artifactregistry.writer",
+#     #   ],
+#       permissions = [
+#         "compute.organizations.enableXpnHost",
+#         "compute.subnetworks.setIamPolicy",
+#         # "storage.buckets.get",
+#         # "storage.buckets.list",
+#       ],
+#     },
     # # Ejemplo de rol personalizado con base en diferentes permisos, a nivel de proyecto
     # "cr2" = {
     #   project_id      = "prj-d-9998-ccoe-sndbx-iam-sw"
@@ -47,5 +71,5 @@ module "iam" {
     #     "compute.instances.list",
     #   ],
     # },
-  }
+#   }
 }
