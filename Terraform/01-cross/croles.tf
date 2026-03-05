@@ -21,7 +21,7 @@ module "iam" {
   custom_roles = {
     # Ejemplo de rol personalizado con base en diferentes roles y permisos, a nivel de organización
     "cr1" = {
-      # org_id          = ""
+      org_id          = "577081811435"
       role_id         = "bootcamp.doers.excercises"
       title           = "Bootcamp Doers Excercises"
       description     = "IAM requerido por los doers para realizar los ejercicios del modulo de GCP"
