@@ -149,6 +149,7 @@ module "iam" {
         "compute.addresses.create",
         "compute.addresses.get",
         "compute.routes.create",
+        "compute.routes.get",
         "compute.routes.delete"
       ],
     },
