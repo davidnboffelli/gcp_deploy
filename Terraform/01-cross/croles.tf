@@ -23,10 +23,12 @@ module "iam" {
     }
     "serviceAccount:doers-service-account@prj-host-test.iam.gserviceaccount.com" = {
       folder_level_roles = [
-        folder_id = "414750509829"
-        roles = [
-          "organizations/577081811435/roles/bootcamp.SAdoers.folder",
-        ]
+        {
+          folder_id = "414750509829"
+          roles = [
+            "organizations/577081811435/roles/bootcamp.SAdoers.folder"
+          ]
+        }
       ]
     }
     "newServiceAccount:sa-doers-test" = {
