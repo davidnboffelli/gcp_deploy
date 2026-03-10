@@ -115,6 +115,7 @@ module "iam" {
         "compute.networks.update",
         "compute.networks.updatePolicy",
         "compute.projects.get",
+        "compute.networks.use",
         "compute.globalOperations.get",
 
       # ----------------------
@@ -125,6 +126,8 @@ module "iam" {
         "compute.subnetworks.get",
         "compute.subnetworks.list",
         "compute.subnetworks.update",
+        "compute.subnetworks.use",
+        "compute.subnetworks.useExternalIp",
 
       # ----------------------
       # PERMISOS DE FIREWALL en el projecto host
@@ -165,10 +168,10 @@ module "iam" {
       # ----------------------
         "compute.instances.create",
         "compute.disks.create",
-        "compute.networks.use",
-        "compute.subnetworks.use",
         "compute.images.useReadOnly",
         "compute.zones.get",
+        "compute.instances.setMetadata",
+        "compute.instances.setLabels",
       # ----------------------
       # CLOUD RUN  service
       # ----------------------
