@@ -36,9 +36,7 @@ module "iam" {
           roles = [
             "organizations/577081811435/roles/bootcamp.SAdoers.prjhost",
           ]
-        }
-      ]
-      project_level_roles = [
+        },
         {
           project_id = "pprj-service-test-486613"
           roles = [
