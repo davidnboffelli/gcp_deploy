@@ -34,3 +34,13 @@ resource "google_project_iam_member" "doers_project_iam" {
   role     = each.value.role
   member   = "${each.value.member}:${each.value.member == "user" ? each.value.email : "sa-${each.value.name}@prj-${local.sa_project}-${each.value.name}${local.project_suffix}.iam.gserviceaccount.com"}"
 }
+
+resource "google_service_account_iam_member" "gce-default-account-iam" {
+  depends_on  = [ google_project.doer_projects,
+                  google_service_account.doer_sa ]
+
+  for_each    = var.doers                
+  service_account_id = "projects/${google_project.doer_projects["${each.value.name}-service"].project_id}/serviceAccounts/${google_project.doer_projects["${each.value.name}-host"].project_number}-compute@developer.gserviceaccount.com"
+  role               = "roles/iam.serviceAccountUser"
+  member             = "serviceAccount:${google_service_account.doer_sa["${each.value.name}"].email}"
+}
