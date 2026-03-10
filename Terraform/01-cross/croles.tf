@@ -27,7 +27,21 @@ module "iam" {
           folder_id = "414750509829"
           roles = [
             "organizations/577081811435/roles/bootcamp.SAdoers.folder",
+          ]
+        }
+      ]
+      project_level_roles = [
+        {
+          project_id = "prj-host-test"
+          roles = [
             "organizations/577081811435/roles/bootcamp.SAdoers.prjhost",
+          ]
+        }
+      ]
+      project_level_roles = [
+        {
+          project_id = "pprj-service-test-486613"
+          roles = [
             "organizations/577081811435/roles/bootcamp.SAdoers.prjservice",
           ]
         }
