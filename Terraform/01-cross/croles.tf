@@ -190,9 +190,16 @@ module "iam" {
         "run.services.update",
         "run.services.delete",
         # Necesario para leer y poder añadirle la politica de acceso de usuarios con auth
-        "run.services.setIamPolicy",  
-        "run.services.getIamPolicy",
+        # "run.services.setIamPolicy",  
+        # "run.services.getIamPolicy",
         "run.operations.get",  
+      # ----------------------
+      # STORAGE service
+      # ----------------------
+        "storage.buckets.create",
+        "storage.buckets.get",
+        "storage.buckets.list",
+        "storage.buckets.delete",
       ],
     },
     # # Ejemplo de rol personalizado con base en diferentes permisos, a nivel de proyecto
