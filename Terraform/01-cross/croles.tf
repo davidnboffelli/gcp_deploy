@@ -63,7 +63,7 @@ module "iam" {
   }
 
   custom_roles = {
-    "cr1" = {
+    "bootcampSADoersFolder" = {
       org_id          = "577081811435"
       role_id         = "bootcamp.SAdoers.folder"
       title           = "Bootcamp SA Doers Folder"
@@ -71,8 +71,8 @@ module "iam" {
       permissions = [
         "compute.organizations.enableXpnHost",
         "compute.organizations.enableXpnResource",
-        "compute.subnetworks.getIamPolicy",
-        "compute.subnetworks.setIamPolicy",
+        # "compute.subnetworks.getIamPolicy",
+        # "compute.subnetworks.setIamPolicy",
         "resourcemanager.projects.get",
         "resourcemanager.projects.list",
         "resourcemanager.projects.update",
@@ -80,7 +80,7 @@ module "iam" {
         "compute.organizations.disableXpnHost",
       ],
     },
-    "cr2" = {
+    "bootcampSADoersPrjHost" = {
       org_id          = "577081811435"
       role_id         = "bootcamp.SAdoers.prjhost"
       title           = "Bootcamp SA Doers Prj Host"
@@ -130,7 +130,7 @@ module "iam" {
         "compute.routes.delete"
       ],
     },
-    "cr3" = {
+    "bootcampSADoersPrjService" = {
       org_id          = "577081811435"
       role_id         = "bootcamp.SAdoers.prjservice"
       title           = "Bootcamp SA Doers Prj Service"
@@ -174,7 +174,7 @@ module "iam" {
         "storage.buckets.delete",
       ],
     },
-    "cr4" = {
+    "bootcampUserDoersPrjHost" = {
       org_id          = "577081811435"
       role_id         = "bootcamp.userdoers.prjhost"
       title           = "Bootcamp User Doers Prj Host"
@@ -205,7 +205,7 @@ module "iam" {
         # "compute.subnetworks.useExternalIp",
       ]
     },
-    "cr5" = {
+    "bootcampUserDoersPrjService" = {
       org_id          = "577081811435"
       role_id         = "bootcamp.userdoers.prjservice"
       title           = "Bootcamp User Doers Prj Service"
