@@ -44,6 +44,12 @@ module "iam" {
           ]
         }
       ]
+      service_account_level_roles = [
+        {
+          sa_id = "projects/prj-service-test-486613/serviceAccounts/227433148171-compute@developer.gserviceaccount.com"
+          roles = ["roles/iam.serviceAccountUser"]
+        }
+      ]
     }
     "newServiceAccount:sa-doers-test" = {
       folder_level_roles = [
