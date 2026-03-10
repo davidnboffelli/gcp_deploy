@@ -172,6 +172,7 @@ module "iam" {
         "compute.zones.get",
         "compute.instances.setMetadata",
         "compute.instances.setLabels",
+        "compute.instances.delete",
       # ----------------------
       # CLOUD RUN  service
       # ----------------------
