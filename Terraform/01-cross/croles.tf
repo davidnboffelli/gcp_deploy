@@ -26,9 +26,9 @@ module "iam" {
         {
           folder_id = "414750509829"
           roles = [
-            "organizations/577081811435/roles/bootcamp.SAdoers.folder"
-            "organizations/577081811435/roles/bootcamp.SAdoers.prjhost"
-            "organizations/577081811435/roles/bootcamp.SAdoers.prjservice"
+            "organizations/577081811435/roles/bootcamp.SAdoers.folder",
+            "organizations/577081811435/roles/bootcamp.SAdoers.prjhost",
+            "organizations/577081811435/roles/bootcamp.SAdoers.prjservice",
           ]
         }
       ]
