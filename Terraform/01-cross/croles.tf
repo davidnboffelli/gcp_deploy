@@ -83,6 +83,7 @@ module "iam" {
       permissions = [
         "compute.organizations.enableXpnHost",
         "compute.organizations.enableXpnResource",
+        "compute.subnetworks.getIamPolicy",
         "compute.subnetworks.setIamPolicy",
         "resourcemanager.projects.get",
         "resourcemanager.projects.list",
@@ -114,6 +115,7 @@ module "iam" {
         "compute.networks.update",
         "compute.networks.updatePolicy",
         "compute.projects.get",
+        "compute.globalOperations.get",
 
       # ----------------------
       # PERMISOS DE SUBRED en el projecto host
