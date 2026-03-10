@@ -84,6 +84,7 @@ module "iam" {
     #   ],
       permissions = [
         "compute.organizations.enableXpnHost",
+        "compute.organizations.enableXpnResource",
         "compute.subnetworks.setIamPolicy",
         # "storage.buckets.get",
         # "storage.buckets.list",
