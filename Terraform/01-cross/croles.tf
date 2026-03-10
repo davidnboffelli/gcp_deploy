@@ -112,6 +112,8 @@ module "iam" {
         "compute.networks.get",
         "compute.networks.list",
         "compute.networks.update",
+        "compute.networks.updatePolicy",
+        "compute.projects.get",
 
       # ----------------------
       # PERMISOS DE SUBRED en el projecto host
