@@ -76,6 +76,7 @@ module "iam" {
         "resourcemanager.projects.list",
         "resourcemanager.projects.update",
         "compute.organizations.disableXpnResource",
+        "compute.organizations.disableXpnHost",
  
         # "storage.buckets.get",
         # "storage.buckets.list",
