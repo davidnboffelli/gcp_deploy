@@ -22,6 +22,12 @@ module "iam" {
             "organizations/577081811435/roles/bootcamp.userdoers.prjhost",
           ]
         },
+        {
+          project_id = "prj-service-test-486613"
+          roles = [
+            "organizations/577081811435/roles/bootcamp.userdoers.prjservice",
+          ]
+        },
       ]
     }
     "serviceAccount:doers-service-account@prj-host-test.iam.gserviceaccount.com" = {
