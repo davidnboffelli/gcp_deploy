@@ -38,7 +38,7 @@ module "iam" {
           ]
         },
         {
-          project_id = "pprj-service-test-486613"
+          project_id = "prj-service-test-486613"
           roles = [
             "organizations/577081811435/roles/bootcamp.SAdoers.prjservice",
           ]
