@@ -148,7 +148,8 @@ module "iam" {
         "compute.routers.update",
         "compute.addresses.create",
         "compute.addresses.get",
-        "compute.routes.create"
+        "compute.routes.create",
+        "compute.routes.delete"
       ],
     },
     "cr3" = {
