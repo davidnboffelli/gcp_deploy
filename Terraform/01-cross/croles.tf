@@ -16,7 +16,6 @@ module "iam" {
         {
           project_id = "prj-host-test"
           roles = [
-            "organizations/577081811435/roles/bootcamp.doers.excercises",
             "organizations/577081811435/roles/bootcamp.SAdoers.prjhost",
           ]
         }
