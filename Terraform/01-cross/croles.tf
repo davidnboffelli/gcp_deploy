@@ -21,6 +21,14 @@ module "iam" {
         }
       ]
     }
+    "serviceAccount:doers-service-account@prj-host-test.iam.gserviceaccount.com" = {
+      folder_level_roles = [
+        folder_id = "414750509829"
+        roles = [
+          "organizations/577081811435/roles/bootcamp.SAdoers.folder",
+        ]
+      ]
+    }
     "newServiceAccount:sa-doers-test" = {
       folder_level_roles = [
         {
@@ -52,6 +60,22 @@ module "iam" {
       role_id         = "bootcamp.SAdoers.prjhost"
       title           = "Bootcamp SA Doers Prj Host"
       description     = "IAM requerido por las sa de los doers sobre su proyecto host para realizar los ejercicios del modulo de GCP"
+    #   roles = [
+    #       "roles/artifactregistry.reader",
+    #       "roles/artifactregistry.writer",
+    #   ],
+      permissions = [
+        "compute.organizations.enableXpnHost",
+        "compute.subnetworks.setIamPolicy",
+        # "storage.buckets.get",
+        # "storage.buckets.list",
+      ],
+    },
+    "cr2" = {
+      org_id          = "577081811435"
+      role_id         = "bootcamp.SAdoers.folder"
+      title           = "Bootcamp SA Doers Folder"
+      description     = "IAM requerido por las sa de los doers sobre su carpeta para realizar los ejercicios del modulo de GCP"
     #   roles = [
     #       "roles/artifactregistry.reader",
     #       "roles/artifactregistry.writer",
