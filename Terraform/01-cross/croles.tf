@@ -168,6 +168,7 @@ module "iam" {
         "compute.networks.use",
         "compute.subnetworks.use",
         "compute.images.useReadOnly",
+        "compute.zones.get",
       # ----------------------
       # CLOUD RUN  service
       # ----------------------
