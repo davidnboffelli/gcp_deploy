@@ -185,6 +185,7 @@ module "iam" {
         "compute.projects.get",
         # "compute.networks.use",
         "compute.globalOperations.get",
+        "compute.routes.delete",
       # ----------------------
       # PERMISOS DE SUBRED en el projecto host
       # ----------------------
