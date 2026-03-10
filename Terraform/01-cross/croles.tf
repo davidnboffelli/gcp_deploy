@@ -147,6 +147,7 @@ module "iam" {
         "compute.instances.setMetadata",
         "compute.instances.setLabels",
         "compute.instances.delete",
+        "compute.instances.setTag",
       # ----------------------
       # CLOUD RUN  service
       # ----------------------
