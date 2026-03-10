@@ -17,6 +17,7 @@ module "iam" {
           project_id = "prj-host-test"
           roles = [
             "organizations/577081811435/roles/bootcamp.doers.excercises",
+            "organizations/577081811435/roles/bootcamp.SAdoers.prjhost",
           ]
         }
       ]
@@ -45,24 +46,24 @@ module "iam" {
     }
   }
 
-#   custom_roles = {
-#     # Ejemplo de rol personalizado con base en diferentes roles y permisos, a nivel de organización
-#     "cr1" = {
-#       org_id          = "577081811435"
-#       role_id         = "bootcamp.doers.excercises"
-#       title           = "Bootcamp Doers Excercises"
-#       description     = "IAM requerido por los doers para realizar los ejercicios del modulo de GCP"
-#     #   roles = [
-#     #       "roles/artifactregistry.reader",
-#     #       "roles/artifactregistry.writer",
-#     #   ],
-#       permissions = [
-#         "compute.organizations.enableXpnHost",
-#         "compute.subnetworks.setIamPolicy",
-#         # "storage.buckets.get",
-#         # "storage.buckets.list",
-#       ],
-#     },
+  custom_roles = {
+    # Ejemplo de rol personalizado con base en diferentes roles y permisos, a nivel de organización
+    "cr1" = {
+      org_id          = "577081811435"
+      role_id         = "bootcamp.SAdoers.prjhost"
+      title           = "Bootcamp SA Doers Prj Host"
+      description     = "IAM requerido por las sa de los doers sobre su proyecto host para realizar los ejercicios del modulo de GCP"
+    #   roles = [
+    #       "roles/artifactregistry.reader",
+    #       "roles/artifactregistry.writer",
+    #   ],
+      permissions = [
+        "compute.organizations.enableXpnHost",
+        "compute.subnetworks.setIamPolicy",
+        # "storage.buckets.get",
+        # "storage.buckets.list",
+      ],
+    },
     # # Ejemplo de rol personalizado con base en diferentes permisos, a nivel de proyecto
     # "cr2" = {
     #   project_id      = "prj-d-9998-ccoe-sndbx-iam-sw"

@@ -14,6 +14,7 @@ Para usar modulo en repo privado:
         terraform -chdir=Terraform init 
       env:
         GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }} 
+Otra forma: https://www.codegenes.net/blog/terraform-module-in-github-private-repo/#ssh-ssh-keys--agents
 
 Siguientes pasos:
 - migrar modulo iam (hecho)
