@@ -198,6 +198,22 @@ module "iam" {
         # "compute.subnetworks.use",
         # "compute.subnetworks.useExternalIp",
       ]
+    },
+    "cr5" = {
+      org_id          = "577081811435"
+      role_id         = "bootcamp.userdoers.prjservice"
+      title           = "Bootcamp User Doers Prj Service"
+      description     = "IAM requerido por los usuarios de los doers sobre su proyecto service para realizar los ejercicios del modulo de GCP"
+      roles = [
+      # ----------------------
+      # IAP en nel service project
+      # ----------------------
+        "roles/iap.tunnelResourceAccessor",
+        "roles/compute.osLogin"
+      ],
+      # permissions = [
+
+      # ]
     }
   }
 }
