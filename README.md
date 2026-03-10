@@ -28,7 +28,4 @@ Siguientes pasos:
 
 
 
-
-
-Permisos:
-inicialmente pedian compute.organizations.enableXpnHost y compute.subnetworks.setIamPolicy, pero di Compute Shared VPC Admin (roles/compute.xpnAdmin) a nivel de folder
+https://developer.hashicorp.com/terraform/install

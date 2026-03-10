@@ -5,7 +5,6 @@ module "iam" {
   }
 
   roles_assignation = {
-    ##########################CREATED SERVICE ACCOUNTS#################################
     "user:cntenorio@stemdo.io" = {
       folder_level_roles = [
         {
