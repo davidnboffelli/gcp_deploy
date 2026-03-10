@@ -25,19 +25,22 @@ common_values = {
       "roles/resourcemanager.organizationViewer",
       ]
     doer_user_roles_over_folder       = [
-      "organizations/761110783262/roles/limitedBrowser",
-      ]     
-    doer_user_roles_over_prj_host     = [
       "roles/reader",
+      ]
+    doer_sa_roles_over_folder       = [
+      "organizations/577081811435/roles/bootcamp.SAdoers.folder",
+      ]
+    doer_user_roles_over_prj_host     = [
+      "organizations/577081811435/roles/bootcamp.userdoers.prjhost",
       ]
     doer_user_roles_over_prj_service  = [
-      "roles/reader",
+      "organizations/577081811435/roles/bootcamp.userdoers.prjservice",
       ]
     doer_sa_roles_over_prj_host       = [
-      "roles/writer",
+      "organizations/577081811435/roles/bootcamp.SAdoers.prjhost",
       ]
     doer_sa_roles_over_prj_service    = [
-      "roles/writer",
+      "organizations/577081811435/roles/bootcamp.SAdoers.prjservice",
       ]
   }
 }

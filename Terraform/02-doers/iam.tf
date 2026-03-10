@@ -16,14 +16,14 @@ resource "google_service_account" "doer_sa" {
 #   member   = "user:${each.value.email}"
 # }
 
-# resource "google_folder_iam_member" "doers_folder_iam" {
-#   depends_on  = [ google_folder.doer_folder ]
-#   for_each = local.doers_iam_over_folder
+resource "google_folder_iam_member" "doers_folder_iam" {
+  depends_on  = [ google_folder.doer_folder ]
+  for_each = local.doers_iam_over_folder
 
-#   folder   = "folders/${google_folder.doer_folder["${each.value.name}"].folder_id}"
-#   role     = each.value.role
-#   member   = "user:${each.value.email}"
-# }
+  folder   = "folders/${google_folder.doer_folder["${each.value.name}"].folder_id}"
+  role     = each.value.role
+  member   = "${each.value.member}:${each.value.member == "user" ? each.value.email : "sa-${each.value.name}@prj-${local.sa_project}-${each.value.name}${local.project_suffix}.iam.gserviceaccount.com"}"
+}
 
 resource "google_project_iam_member" "doers_project_iam" {
   depends_on  = [ google_project.doer_projects,

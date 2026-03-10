@@ -15,6 +15,7 @@ variable "common_values" {
         prj_service_services              = list(string)
         doer_user_roles_over_org          = list(string)
         doer_user_roles_over_folder       = list(string)
+        doer_sa_roles_over_folder         = list(string)
         doer_user_roles_over_prj_host     = list(string)
         doer_user_roles_over_prj_service  = list(string)
         doer_sa_roles_over_prj_host       = list(string)
