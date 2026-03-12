@@ -5,30 +5,30 @@ module "iam" {
   }
 
   roles_assignation = {
-    "user:cntenorio@stemdo.io" = {
-      folder_level_roles = [
-        {
-          folder_id = "414750509829"
-          roles = [
-            "roles/reader",
-          ]
-        }
-      ]
-      project_level_roles = [
-        {
-          project_id = "prj-host-test"
-          roles = [
-            "organizations/577081811435/roles/bootcamp.userdoers.prjhost",
-          ]
-        },
-        {
-          project_id = "prj-service-test-486613"
-          roles = [
-            "organizations/577081811435/roles/bootcamp.userdoers.prjservice",
-          ]
-        },
-      ]
-    }
+    # "user:cntenorio@stemdo.io" = {
+    #   folder_level_roles = [
+    #     {
+    #       folder_id = "414750509829"
+    #       roles = [
+    #         "roles/reader",
+    #       ]
+    #     }
+    #   ]
+    #   project_level_roles = [
+    #     {
+    #       project_id = "prj-host-test"
+    #       roles = [
+    #         "organizations/577081811435/roles/bootcamp.userdoers.prjhost",
+    #       ]
+    #     },
+    #     {
+    #       project_id = "prj-service-test-486613"
+    #       roles = [
+    #         "organizations/577081811435/roles/bootcamp.userdoers.prjservice",
+    #       ]
+    #     },
+    #   ]
+    # }
     "serviceAccount:doers-service-account@prj-host-test.iam.gserviceaccount.com" = {
       folder_level_roles = [
         {
