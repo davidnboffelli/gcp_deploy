@@ -171,6 +171,19 @@ module "iam" {
         "storage.buckets.get",
         "storage.buckets.list",
         "storage.buckets.delete",
+      # ----------------------
+      # Artifact Registry service
+      # ----------------------
+        "artifactregistry.repositories.create",
+        "artifactregistry.repositories.delete",
+        "artifactregistry.repositories.get",
+        "artifactregistry.repositories.list",
+        "artifactregistry.repositories.downloadArtifacts",
+        "artifactregistry.repositories.uploadArtifacts",
+        "artifactregistry.tags.create",
+        "artifactregistry.tags.get",
+        "artifactregistry.tags.list",
+        "artifactregistry.tags.update",
       ],
     },
     "bootcampUserDoersPrjHost" = {
