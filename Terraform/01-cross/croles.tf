@@ -228,6 +228,8 @@ module "iam" {
       # ----------------------
         "roles/iap.tunnelResourceAccessor",
         "roles/compute.osLogin",
+      ],
+      permissions = [
       # ----------------------
       # GKE Container service
       # ----------------------
@@ -258,10 +260,7 @@ module "iam" {
         "container.secrets.list",
         "container.secrets.update",
         "container.secrets.delete",
-      ],
-      # permissions = [
-
-      # ]
+      ]
     }
   }
 }
