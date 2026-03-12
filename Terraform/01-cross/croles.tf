@@ -5,30 +5,30 @@ module "iam" {
   }
 
   roles_assignation = {
-    # "user:cntenorio@stemdo.io" = {
-    #   folder_level_roles = [
-    #     {
-    #       folder_id = "414750509829"
-    #       roles = [
-    #         "roles/reader",
-    #       ]
-    #     }
-    #   ]
-    #   project_level_roles = [
-    #     {
-    #       project_id = "prj-host-test"
-    #       roles = [
-    #         "organizations/577081811435/roles/bootcamp.userdoers.prjhost",
-    #       ]
-    #     },
-    #     {
-    #       project_id = "prj-service-test-486613"
-    #       roles = [
-    #         "organizations/577081811435/roles/bootcamp.userdoers.prjservice",
-    #       ]
-    #     },
-    #   ]
-    # }
+    "user:cntenorio@stemdo.io" = {
+      # folder_level_roles = [
+      #   {
+      #     folder_id = "414750509829"
+      #     roles = [
+      #       "roles/reader",
+      #     ]
+      #   }
+      # ]
+      project_level_roles = [
+      #   {
+      #     project_id = "prj-host-test"
+      #     roles = [
+      #       "organizations/577081811435/roles/bootcamp.userdoers.prjhost",
+      #     ]
+      #   },
+        {
+          project_id = "prj-service-test-486613"
+          roles = [
+            "organizations/577081811435/roles/bootcamp.userdoers.prjservice",
+          ]
+        },
+      ]
+    }
     "serviceAccount:doers-service-account@prj-host-test.iam.gserviceaccount.com" = {
       folder_level_roles = [
         {
@@ -227,7 +227,37 @@ module "iam" {
       # IAP en nel service project
       # ----------------------
         "roles/iap.tunnelResourceAccessor",
-        "roles/compute.osLogin"
+        "roles/compute.osLogin",
+      # ----------------------
+      # GKE Container service
+      # ----------------------
+        "container.namespaces.get",
+        "container.namespaces.list",
+        "container.pods.create",
+        "container.pods.get",
+        "container.pods.list",
+        "container.pods.delete",
+        "container.pods.getLogs",
+        "container.deployments.create",
+        "container.deployments.get",
+        "container.deployments.list",
+        "container.deployments.update",
+        "container.deployments.delete",
+        "container.services.create",
+        "container.services.get",
+        "container.services.list",
+        "container.services.update",
+        "container.services.delete",
+        "container.configMaps.create",
+        "container.configMaps.get",
+        "container.configMaps.list",
+        "container.configMaps.update",
+        "container.configMaps.delete",
+        "container.secrets.create",
+        "container.secrets.get",
+        "container.secrets.list",
+        "container.secrets.update",
+        "container.secrets.delete",
       ],
       # permissions = [
 
