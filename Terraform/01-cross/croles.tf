@@ -184,9 +184,11 @@ module "iam" {
         "artifactregistry.tags.get",
         "artifactregistry.tags.list",
         "artifactregistry.tags.update",
-      # # ----------------------
-      # # GKE Container service
-      # # ----------------------
+      # ----------------------
+      # GKE Container service
+      # ----------------------
+      "container.clusters.get",
+      "container.clusters.list",
       #   "container.namespaces.get",
       #   "container.namespaces.list",
       #   "container.pods.create",
