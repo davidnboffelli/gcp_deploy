@@ -59,6 +59,36 @@ module "iam" {
         }
       ]
     }
+    "serviceAccount:github-actions-sa@prj-host-test.iam.gserviceaccount.com" = {
+      folder_level_roles = [
+        {
+          folder_id = "414750509829"
+          roles = [
+            "organizations/577081811435/roles/bootcamp.SAdoers.folder",
+          ]
+        }
+      ]
+      project_level_roles = [
+        {
+          project_id = "prj-host-test"
+          roles = [
+            "organizations/577081811435/roles/bootcamp.SAdoers.prjhost",
+          ]
+        },
+        {
+          project_id = "prj-service-test-486613"
+          roles = [
+            "organizations/577081811435/roles/bootcamp.SAdoers.prjservice",
+          ]
+        }
+      ]
+      service_account_level_roles = [
+        {
+          sa_id = "projects/prj-service-test-486613/serviceAccounts/227433148171-compute@developer.gserviceaccount.com"
+          roles = ["roles/iam.serviceAccountUser"]
+        }
+      ]
+    }
   }
 
   custom_roles = {
