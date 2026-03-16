@@ -197,7 +197,7 @@ module "iam" {
       ],
       permissions = [
       # ----------------------
-      # PERMISOS VM en el project service
+      # COMPUTE en el project service
       # ----------------------
         "compute.instances.create",
         "compute.disks.create",
@@ -207,6 +207,21 @@ module "iam" {
         "compute.instances.setLabels",
         "compute.instances.delete",
         "compute.instances.setTags",
+      # ----------------------
+      # COMPUTE WEEKLY en el project service
+      # ----------------------
+        "compute.regionNetworkEndpointGroups.create",
+        "compute.regionNetworkEndpointGroups.delete",
+        "compute.regionNetworkEndpointGroups.list",
+        "compute.regionNetworkEndpointGroups.get ",
+        "compute.backendBuckets.create",
+        "compute.backendBuckets.delete",
+        "compute.backendBuckets.get",
+        "compute.backendBuckets.list",
+        "compute.globalAddresses.create",
+        "compute.globalAddresses.delete",
+        "compute.globalAddresses.get",
+        "compute.globalAddresses.list",
       # ----------------------
       # CLOUD RUN  service
       # ----------------------
@@ -225,6 +240,10 @@ module "iam" {
         "storage.buckets.get",
         "storage.buckets.list",
         "storage.buckets.delete",
+        "storage.objects.create",
+        "storage.objects.list",
+        "storage.objects.get",
+        "storage.objects.delete",
       # ----------------------
       # Artifact Registry service
       # ----------------------
