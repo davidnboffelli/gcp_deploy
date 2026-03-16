@@ -222,6 +222,8 @@ module "iam" {
         "compute.globalAddresses.delete",
         "compute.globalAddresses.get",
         "compute.globalAddresses.list",
+        "compute.globalOperations.get",
+        "compute.globalOperations.list",
       # ----------------------
       # CLOUD RUN  service
       # ----------------------
