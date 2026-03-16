@@ -213,7 +213,7 @@ module "iam" {
         "compute.regionNetworkEndpointGroups.create",
         "compute.regionNetworkEndpointGroups.delete",
         "compute.regionNetworkEndpointGroups.list",
-        "compute.regionNetworkEndpointGroups.get ",
+        "compute.regionNetworkEndpointGroups.get",
         "compute.backendBuckets.create",
         "compute.backendBuckets.delete",
         "compute.backendBuckets.get",
