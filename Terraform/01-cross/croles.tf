@@ -180,7 +180,7 @@ module "iam" {
         "compute.addresses.get",
         "compute.routes.create",
         "compute.routes.get",
-        "compute.routes.delete"
+        "compute.routes.delete",
       # ----------------------
       # COMPUTE WEEKLY en el project service
       # ----------------------
