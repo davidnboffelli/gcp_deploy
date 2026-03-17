@@ -202,6 +202,11 @@ module "iam" {
         "compute.targetHttpProxies.list",
         "compute.targetHttpProxies.use",
         "compute.targetHttpProxies.delete",
+        "compute.globalForwardingRules.create",
+        "compute.globalForwardingRules.delete",
+        "compute.globalForwardingRules.get",
+        "compute.globalForwardingRules.list",
+ 
       ],
     },
     "bootcampSADoersPrjService" = {
