@@ -181,6 +181,14 @@ module "iam" {
         "compute.routes.create",
         "compute.routes.get",
         "compute.routes.delete"
+      # ----------------------
+      # COMPUTE WEEKLY en el project service
+      # ----------------------
+        "compute.urlMaps.create",
+        "compute.urlMaps.get",
+        "compute.urlMaps.list",
+        "compute.urlMaps.update",
+        "compute.urlMaps.delete",
       ],
     },
     "bootcampSADoersPrjService" = {
@@ -219,10 +227,12 @@ module "iam" {
         "compute.backendBuckets.delete",
         "compute.backendBuckets.get",
         "compute.backendBuckets.list",
+        "compute.backendBuckets.use",
         "compute.backendServices.create",
         "compute.backendServices.delete",
         "compute.backendServices.get",
         "compute.backendServices.list",
+        "compute.backendServices.use",
         "compute.globalAddresses.create",
         "compute.globalAddresses.delete",
         "compute.globalAddresses.get",
