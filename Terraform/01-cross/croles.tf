@@ -266,6 +266,7 @@ module "iam" {
         "run.services.get",
         "run.services.update",
         "run.services.delete",
+        "run.routes.invoke",
         # Necesario para leer y poder añadirle la politica de acceso de usuarios con auth?
         # "run.services.setIamPolicy",  
         # "run.services.getIamPolicy",
