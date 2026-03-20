@@ -230,11 +230,6 @@ module "iam" {
         "compute.globalForwardingRules.delete",
         "compute.globalForwardingRules.get",
         "compute.globalForwardingRules.list",
-        "compute.instanceGroups.create",
-        "compute.instanceGroups.delete",
-        "compute.instanceGroups.list",
-        "compute.instanceGroups.get",
-        "compute.instanceGroups.update",
       ],
     },
     "bootcampSADoersPrjService" = {
@@ -300,6 +295,11 @@ module "iam" {
         "compute.globalAddresses.list",
         "compute.globalOperations.get",
         "compute.globalOperations.list",
+        "compute.instanceGroups.create",
+        "compute.instanceGroups.delete",
+        "compute.instanceGroups.list",
+        "compute.instanceGroups.get",
+        "compute.instanceGroups.update",
       # ----------------------
       # CLOUD RUN  service
       # ----------------------
