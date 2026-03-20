@@ -230,7 +230,11 @@ module "iam" {
         "compute.globalForwardingRules.delete",
         "compute.globalForwardingRules.get",
         "compute.globalForwardingRules.list",
- 
+        "compute.instanceGroups.create",
+        "compute.instanceGroups.delete",
+        "compute.instanceGroups.list",
+        "compute.instanceGroups.get",
+        "compute.instanceGroups.update",
       ],
     },
     "bootcampSADoersPrjService" = {
