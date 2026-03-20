@@ -233,6 +233,7 @@ module "iam" {
         "compute.instances.setLabels",
         "compute.instances.delete",
         "compute.instances.setTags",
+        "compute.instances.setServiceAccount",
       # ----------------------
       # COMPUTE WEEKLY en el project service
       # ----------------------
