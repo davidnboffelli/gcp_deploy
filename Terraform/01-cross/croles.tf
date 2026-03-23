@@ -271,6 +271,7 @@ module "iam" {
         "compute.regionHealthChecks.list",
         "compute.regionHealthChecks.update",
         "compute.regionHealthChecks.use",
+        "compute.regionHealthChecks.useReadOnly",
         "compute.regionBackendServices.create",
         "compute.regionBackendServices.delete",
         "compute.regionBackendServices.get",
