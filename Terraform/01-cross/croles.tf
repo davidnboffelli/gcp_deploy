@@ -301,8 +301,6 @@ module "iam" {
         "compute.instanceGroups.get",
         "compute.instanceGroups.update",
         "compute.instances.use",
-        "compute.instances.delete",
-        "compute.instances.create",
         "compute.instances.get",
       # ----------------------
       # CLOUD RUN  service
