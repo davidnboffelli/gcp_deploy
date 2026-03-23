@@ -301,6 +301,7 @@ module "iam" {
         "compute.instanceGroups.list",
         "compute.instanceGroups.get",
         "compute.instanceGroups.update",
+        "compute.instanceGroups.use",
         "compute.instances.use",
         "compute.instances.get",
       # ----------------------
