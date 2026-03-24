@@ -226,9 +226,7 @@ module "iam" {
         # "compute.globalAddresses.list",
         # "compute.globalAddresses.use",
         # "compute.globalAddresses.delete",
-        "compute.addresses.create",
         "compute.addresses.update",
-        "compute.addresses.get",
         "compute.addresses.list",
         "compute.addresses.use",
         "compute.addresses.delete",
@@ -252,6 +250,7 @@ module "iam" {
         "compute.forwardingRules.delete",
         "compute.forwardingRules.get",
         "compute.forwardingRules.list",
+        "compute.regionBackendServices.use",
       ],
     },
     "bootcampSADoersPrjService" = {
