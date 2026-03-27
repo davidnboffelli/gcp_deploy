@@ -230,6 +230,7 @@ module "iam" {
         "compute.addresses.list",
         "compute.addresses.use",
         "compute.addresses.delete",
+        "compute.addresses.setLabels",
         # "compute.targetHttpProxies.create",
         # "compute.targetHttpProxies.update",
         # "compute.targetHttpProxies.get",
