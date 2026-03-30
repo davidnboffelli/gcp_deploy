@@ -401,6 +401,10 @@ module "iam" {
       description     = "IAM requerido por los usuarios de los doers sobre su proyecto host para realizar los ejercicios del modulo de GCP"
       permissions = [
       # ----------------------
+      # PERMISOS para crear key de sa
+      # ----------------------
+        "iam.serviceAccountKeys.create",
+      # ----------------------
       # PERMISOS DE VPC en el projecto host
       # ----------------------
         "compute.networks.create",
