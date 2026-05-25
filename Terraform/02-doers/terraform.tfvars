@@ -12,7 +12,7 @@ doers = {
 common_values = {
   "values" = {
     bootcamp_folder_id                = "folders/414750509829"
-    random_project_id_suffix          = true
+    # random_project_id_suffix          = true
     prj_host_services                 = [
       "iam.googleapis.com",
       "cloudresourcemanager.googleapis.com",
