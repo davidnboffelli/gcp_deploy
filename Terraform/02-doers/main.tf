@@ -28,5 +28,5 @@ resource "google_project_service" "project_services" {
   service                     = each.value.service
   disable_dependent_services  = true
   disable_on_destroy          = false
-  # billing_account             = "014F7F-035A51-0DB60B"
+  billing_account             = "014F7F-035A51-0DB60B"
 }
