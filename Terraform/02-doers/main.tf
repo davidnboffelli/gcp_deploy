@@ -20,6 +20,29 @@ resource "google_project" "doer_projects" {
   deletion_policy = "DELETE"
 }
 
+# module "project-factory" {
+#   source  = "terraform-google-modules/project-factory/google"
+#   version = "18.0"
+
+#   depends_on  = [ google_folder.doer_folder ]
+#   for_each    = local.doer_projec
+
+#   name              = "prj-${each.value.project}-${each.value.doer}"
+#   random_project_id = var.common_values.values.random_project_id_suffix
+#   org_id            = var.org_id
+#   folder_id         = google_folder.doer_folder["${each.value.doer}"].id
+#   billing_account   = var.billing_account
+
+#   activate_apis = [
+#     "compute.googleapis.com",
+#     "container.googleapis.com",
+#     "essentialcontacts.googleapis.com",
+#     "serviceusage.googleapis.com"
+#   ]
+
+#   deletion_policy = "DELETE"
+# }
+
 resource "google_project_service" "project_services" {
   depends_on  = [ google_project.doer_projects ]
   for_each    = local.doer_project_services
