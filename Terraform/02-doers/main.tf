@@ -18,6 +18,7 @@ resource "google_project" "doer_projects" {
   project_id      = "prj-${each.value.project}-${each.value.doer}${local.project_suffix}"
   folder_id       = google_folder.doer_folder["${each.value.doer}"].id
   deletion_policy = "DELETE"
+  billing_account = "014F7F-035A51-0DB60B"
 }
 
 # module "project-factory" {
@@ -51,5 +52,4 @@ resource "google_project_service" "project_services" {
   service                     = each.value.service
   disable_dependent_services  = true
   disable_on_destroy          = false
-  billing_account             = "014F7F-035A51-0DB60B"
 }
