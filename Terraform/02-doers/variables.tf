@@ -26,7 +26,7 @@ variable "common_values" {
   default     = {
     "values" = {
       bootcamp_folder_id                = "folders/414750509829"
-      random_project_id_suffix          = true
+      random_project_id_suffix          = false
       prj_host_services                 = [
         "compute.googleapis.com",
         "cloudresourcemanager.googleapis.com",
