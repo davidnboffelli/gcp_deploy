@@ -26,7 +26,7 @@ resource "google_folder_iam_member" "doers_folder_iam" {
 }
 
 resource "google_project_iam_member" "doers_project_iam" {
-  depends_on  = [ google_project.doer_projects,
+  depends_on  = [ google_project_service.project_services,
                   google_service_account.doer_sa ]
   for_each = local.doers_roles_map
 
@@ -36,7 +36,7 @@ resource "google_project_iam_member" "doers_project_iam" {
 }
 
 resource "google_service_account_iam_member" "gce-default-account-iam" {
-  depends_on  = [ google_project.doer_projects,
+  depends_on  = [ google_project_service.project_services,
                   google_service_account.doer_sa ]
 
   for_each    = var.doers                
