@@ -162,7 +162,7 @@ module "iam" {
       description     = "IAM requerido por las sa de los doers sobre su proyecto host para realizar los ejercicios del modulo de GCP"
       permissions = [
       # ----------------------
-      # PERMISOS DE VPC en el projecto host
+      # PERMISOS DE VPC en el proyecto host
       # ----------------------
         "compute.networks.create",
         "compute.networks.delete",
@@ -174,7 +174,7 @@ module "iam" {
         "compute.networks.use",
         "compute.globalOperations.get",
       # ----------------------
-      # PERMISOS DE SUBRED en el projecto host
+      # PERMISOS DE SUBRED en el proyecto host
       # ----------------------
         "compute.subnetworks.create",
         "compute.subnetworks.delete",
@@ -184,7 +184,7 @@ module "iam" {
         "compute.subnetworks.use",
         "compute.subnetworks.useExternalIp",
       # ----------------------
-      # PERMISOS DE FIREWALL en el projecto host
+      # PERMISOS DE FIREWALL en el proyecto host
       # ----------------------
         "compute.firewalls.create",
         "compute.firewalls.delete",
@@ -344,17 +344,18 @@ module "iam" {
       # ----------------------
         "iam.serviceAccountKeys.create",
       # ----------------------
-      # PERMISOS DE VPC en el projecto host
+      # PERMISOS DE VPC en el proyecto host
       # ----------------------
         "compute.networks.create",
         "compute.networks.delete",
         "compute.networks.get",
         "compute.networks.list",
+        "compute.networks.updatePolicy",
         "compute.projects.get",
         "compute.globalOperations.get",
         "compute.routes.delete",
       # ----------------------
-      # PERMISOS DE SUBRED en el projecto host
+      # PERMISOS DE SUBRED en el proyecto host
       # ----------------------
         "compute.subnetworks.create",
         "compute.subnetworks.delete",
